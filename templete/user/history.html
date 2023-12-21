@@ -1,0 +1,152 @@
+
+<style>
+  table {
+	width: 750px;
+	border-collapse: collapse;
+	margin-top: 170px;
+    margin-left: 18rem;
+	}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+	background: #eee;
+	}
+.history{
+  margin-left:33rem;
+  margin-top: 2rem;
+}
+th {
+	background: #008080;
+	color: white;
+	font-weight: bold;
+	}
+
+td, th {
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: left;
+	font-size: 18px;
+	}
+
+/*
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	table {
+	  	width: 100%;
+
+	}
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	tr { border: 1px solid #ccc; }
+
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+ .background {
+      background-color: hsl(218, 41%, 15%);
+      background-image: radial-gradient(650px circle at 0% 0%,
+    }
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+		/* Label the data */
+		content: attr(data-column);
+
+		color: #000;
+		font-weight: bold;
+	}
+
+}
+</style>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+ <nav class="navbar navbar-expand-lg " style="background-color:#9FE2BF; HEIGHT: 83PX;"><P style=margin-left:px;"><img src="https://assets-global.website-files.com/6364b3839895890bb2c275a4/6364d6eaf534664ff26b5aa1_Nav-logo.svg" loading="lazy" alt="Nav Bar Brand Icon"></P>
+
+  <div class="container-fluid" style="margin-left:370px; background-color:#9FE2BF;" >
+
+<!--    <a class="navbar-brand " style="margin-left:444px; " href="#">HOME</a>-->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" onclick="history.back()">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="">HISTORY</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'view_cart' %}">MY CART</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="store">STORE</a>
+        </li>
+      </ul>
+
+          <a class="nav-link" href="logout">LOGOUT</a>
+
+      <span class="navbar-text">
+
+      </span>
+    </div>
+  </div>
+</nav>
+<div>
+<body style="background-color: #336688;
+      background-image: radial-gradient(650px circle at 0% 0%,">
+<div>
+<!--<h1 class="history">MY HISTORY</h1>-->
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>DATE</th>
+      <th>Medicine Name</th>
+      <th>Price</th>
+      <th>Company</th>
+
+    </tr>
+  </thead>
+  <tbody>\
+  {% for i  in hist %}
+    <tr>
+      <td data-column="First Name">{{i.date}}</td>
+      <td data-column="First Name">{{i.medicinename.medicinename}}</td>
+      <td data-column="Last Name">{{i.medicinename.price}}</td>
+      <td data-column="Job Title">{{i.medicinename.company}}</td>
+<!--      <td data-column="Twitter">dfghj</td>-->
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</body>
