@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load static %}
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
@@ -207,11 +207,11 @@ margin-top:3rem;
                     HOME
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="store" class="nav-link active" style="margin-left:2rem;font-size: 18PX;">
-                    STORE
-                </a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--                <a href="{% url " class="nav-link active" style="margin-left:2rem;font-size: 18PX;">-->
+<!--                    STORE-->
+<!--                </a>-->
+<!--            </li>-->
             <li class="nav-item">
                 <a href="{% url 'view_cart' %}" class="nav-link active" style="margin-left:2rem;font-size: 18PX;">
                     CART
@@ -222,11 +222,13 @@ margin-top:3rem;
                     HISTORY
                 </a>
             </li>
-              <li class="nav-item">
-                <a href="logout" class="nav-link active" style="margin-left:20rem;font-size: 18PX;">
-                    LOGOUT
-                </a>
-            </li>
+<!--              <li class="nav-item">-->
+<!--                <a href="logout" class="nav-link active" style="margin-left:20rem;font-size: 18PX;">-->
+<!--                    LOGOUT-->
+<!--                </a>-->
+<!--            </li>-->
+<!--            <li><a href="{ url 'logout"><img style="height:35px; margin-top:1px; margin-left:14rem;" src="{% static 'images/power.png' %}"></a></li>-->
+
         </ul>
         </div>
 

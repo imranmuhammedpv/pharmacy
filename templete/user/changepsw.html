@@ -1,3 +1,4 @@
+{% load static %}
 <style>
     .mainDiv {
     display: flex;
@@ -143,8 +144,8 @@ button[disabled] {
                 </a>
             </li>
               <li class="nav-item">
-                <a href="logout" class="nav-link active" style="margin-left:20rem;font-size: 18PX;">
-                    LOGOUT
+                <a href="logout"><img style="height:35px; margin-top:1px; margin-left:14rem;" src="{% static 'images/power.png' %}">
+
                 </a>
             </li>
         </ul>

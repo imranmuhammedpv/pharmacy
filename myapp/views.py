@@ -13,7 +13,7 @@ def home(request):
         return render(request,'user/userhome.html')
 def store(request):
     data = product.objects.all()
-    return render(request, 'user/shop.html', {'data': data})
+    return render(request, 'user/store.html', {'data': data})
 def registration (request):
     return render(request,'signnew.html')
 
@@ -50,8 +50,8 @@ def log(request):
         username=request.POST['username']
         password=request.POST['password']
         try:
-            data2=user.objects.get(name=username,password=password)
-            if data2.type == 0:
+            data2=user.objects.get(name=username)
+            if data2.type == 0 and password==data2.password:
                 request.session['id']=data2.id
                 return redirect(userpage)
             else:
@@ -64,7 +64,7 @@ def log(request):
             else:
                 return HttpResponse("admin approval ")
         except Exception as e:
-            return HttpResponse({e})
+            return HttpResponse("password invalid")
     else:
         return render(request,'lognew.html')
 
@@ -121,6 +121,8 @@ def editprofile(request,id):
                 return redirect(log)
         else:
           return render(request,'user/editprofile.html',{'form':userpr,'user':use1})
+    else:
+        return redirect(log)
 
 
 def addproduct(request):
@@ -167,15 +169,17 @@ def viewproduct(request):
 def editproductt(request,id):
     if 'id' in request.session:
         use2 = product.objects.get(id=id)
+        print(use2)
         userpr2 = editproductform(instance=use2)
         if request.method=='POST':
-            userpr2=editproductform(request.POST,instance=use2)
+            userpr2=editproductform(request.POST,request.FILES,instance=use2)
             if userpr2.is_valid():
                 userpr2.save()
                 return redirect(viewproduct)
         else:
             return render(request,'pharmacy/editproduct.html',{'form2':userpr2,'user1':use2})
-
+    else:
+        return redirect(viewproduct)
 
 def deleteproduct(request,id):
     data=product.objects.get(id=id)
@@ -198,6 +202,8 @@ def editpharmacyprofile(request,id):
                 return redirect(log)
         else:
           return render(request,'pharmacy/pharmacyeditprofile.html',{'form1':userpr1,'user1':use1})
+    else:
+        return redirect(log)
 
 
 def book(request,id):
@@ -239,6 +245,8 @@ def Add_cart (request,id):
             data6.save()
             data = cart.objects.filter(userid=user2)
             return render(request,'user/cartpage.html',{'cartt':data})
+    else:
+        return redirect(log)
 def cartdelete(request,id):
     if 'id' in request.session:
         useid = request.session['id']
@@ -248,6 +256,8 @@ def cartdelete(request,id):
         data1.delete()
         data = cart.objects.filter(userid=user2)
         return render(request, 'user/cartpage.html', {'cartt': data})
+    else:
+        return redirect(log)
 
 
 def alreadycart(request):
@@ -259,6 +269,8 @@ def history (request):
         user1=user.objects.get(id=useid)
         history=booking.objects.filter(name=user1)
         return render(request, 'user/history.html', {'hist': history})
+    else:
+        return redirect(log)
 
 
 def phar_history(request):
@@ -277,4 +289,17 @@ def paymentt(request,id):
         use2=user.objects.get(id=use1)
         book=product.objects.get(id=id)
         return render(request,'user/payment.html',{'book':book})
-    pass
+
+
+
+def searchbar(request):
+    if request.method=='GET':
+        result=request.GET.get('search')
+        if result:
+            products = product.objects.all().filter(medicinename=result)
+            return render(request,'user/searchresult.html',{'products':products})
+        else:
+            print("no information to show")
+            return render(request,'user/searchresult.html',{})
+
+

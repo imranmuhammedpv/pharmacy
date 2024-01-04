@@ -52,6 +52,7 @@
               <ul class="site-menu js-clone-nav d-none d-lg-block">
                 <li class="active"><a href="">Home</a></li>
                 <li><a href="store">Store</a></li>
+<!--                <li><img style="height:3rem;" src="{% static 'images/back.png' %}"></li>-->
 <!--                <li class="has-children">-->
 <!--                  <a href="#">Dropdown</a>-->
 <!--                  <ul class="dropdown">-->
@@ -88,7 +89,8 @@
               </ul>
             </nav>
           </div>
-           <li><a href="logout">LOGOUT</a></li>
+           <a href="logout"><img style="height:35px; margin-top:-10px; margin-left:3rem;" src="{% static 'images/power.png' %}"></a></li>
+
 <!--          <div class="icons">-->
 <!--            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>-->
 <!--            <a href="cart.html" class="icons-btn d-inline-block bag">-->
@@ -169,38 +171,38 @@
 
         <div class="row">
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <span class="tag">Sale</span>
-            <a href="shop-single.html"> <img src="{% static 'images/product_01.png' %}" alt="Image"></a>
+<!--            <span class="tag">Sale</span>-->
+            <a href="store"> <img src="{% static 'images/product_01.png' %}" alt="Image"></a>
             <h3 class="text-dark"><a href="shop-single.html">Bioderma</a></h3>
-            <p class="price"><del>95.00</del> &mdash; $55.00</p>
+            <p class="price">₹789</p>
           </div>
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <a href="shop-single.html"> <img src="{% static 'images/product_02.png' %}" alt="Image"></a>
+            <a href="store"> <img src="{% static 'images/product_02.png' %}" alt="Image"></a>
             <h3 class="text-dark"><a href="shop-single.html">Chanca Piedra</a></h3>
-            <p class="price">$70.00</p>
+            <p class="price">₹70.00</p>
           </div>
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <a href="shop-single.html"> <img src="{% static 'images/product_03.png' %}" alt="Image"></a>
+            <a href="store"> <img src="{% static 'images/product_03.png' %}" alt="Image"></a>
             <h3 class="text-dark"><a href="shop-single.html">Umcka Cold Care</a></h3>
-            <p class="price">$120.00</p>
+            <p class="price">$120</p>
           </div>
 
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
 
-            <a href="shop-single.html"> <img src="{% static 'images/product_04.png' %}" alt="Image"></a>
+            <a href="store"> <img src="{% static 'images/product_04.png' %}" alt="Image"></a>
             <h3 class="text-dark"><a href="shop-single.html">Cetyl Pure</a></h3>
-            <p class="price"><del>45.00</del> &mdash; $20.00</p>
+            <p class="price">₹600</p>
           </div>
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <a href="shop-single.html"> <img src="{% static 'images/product_05.png' %}" alt="Image"></a>
+            <a href="store"> <img src="{% static 'images/product_05.png' %}" alt="Image"></a>
             <h3 class="text-dark"><a href="shop-single.html">CLA Core</a></h3>
-            <p class="price">$38.00</p>
+            <p class="price">₹130</p>
           </div>
           <div class="col-sm-6 col-lg-4 text-center item mb-4">
-            <span class="tag">Sale</span>
-            <a href="shop-single.html"> <img src="{% static 'images/product_06.png' %}" alt="Image"></a>
+<!--            <span class="tag">Sale</span>-->
+            <a href="store"> <img src="{% static 'images/product_06.png' %}" alt="Image"></a>
             <h3 class="text-dark"><a href="shop-single.html">Poo Pourri</a></h3>
-            <p class="price"><del>$89</del> &mdash; $38.00</p>
+            <p class="price">₹998</p>
           </div>
         </div>
         <div class="row mt-5">
@@ -253,64 +255,7 @@
 <!--      </div>-->
 <!--    </div>-->
 
-    <div class="site-section">
-      <div class="container">
-        <div class="row">
-          <div class="title-section text-center col-12">
-            <h2 class="text-uppercase">Testimonials</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 block-3 products-wrap">
-            <div class="nonloop-block-3 no-direction owl-carousel">
-        
-              <div class="testimony">
-                <blockquote>
-                  <img src="{% static 'images/person_1.jpg' %}" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                  <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam tempore obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur ducimus. Minus ratione sit quaerat unde.&rdquo;</p>
-                </blockquote>
 
-                <p>&mdash; Kelly Holmes</p>
-              </div>
-        
-              <div class="testimony">
-                <blockquote>
-                  <img src="{% static 'images/person_2.jpg' %}" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                  <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam tempore
-                    obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur ducimus. Minus ratione sit quaerat
-                    unde.&rdquo;</p>
-                </blockquote>
-              
-                <p>&mdash; Rebecca Morando</p>
-              </div>
-        
-              <div class="testimony">
-                <blockquote>
-                  <img src="{% static 'images/person_3.jpg' %}" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                  <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam tempore
-                    obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur ducimus. Minus ratione sit quaerat
-                    unde.&rdquo;</p>
-                </blockquote>
-              
-                <p>&mdash; Lucas Gallone</p>
-              </div>
-        
-              <div class="testimony">
-                <blockquote>
-                  <img src="{% static 'images/person_4.jpg' %}" alt="Image" class="img-fluid w-25 mb-4 rounded-circle">
-                  <p>&ldquo;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo omnis voluptatem consectetur quam tempore
-                    obcaecati maiores voluptate aspernatur iusto eveniet, placeat ab quod tenetur ducimus. Minus ratione sit quaerat
-                    unde.&rdquo;</p>
-                </blockquote>
-              
-                <p>&mdash; Andrew Neel</p>
-              </div>
-        
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <div class="site-section bg-secondary bg-image" style="background-image: url({% static 'images/bg_2.jpg' %});">
       <div class="container">
@@ -353,10 +298,10 @@
           <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
             <h3 class="footer-heading mb-4">Quick Links</h3>
             <ul class="list-unstyled">
-              <li><a href="#">Supplements</a></li>
-              <li><a href="#">Vitamins</a></li>
-              <li><a href="#">Diet &amp; Nutrition</a></li>
-              <li><a href="#">Tea &amp; Coffee</a></li>
+              <li><a href="store">Products</a></li>
+              <li><a href="{% url 'history' %}">history</a></li>
+              <li><a href="{% url 'view_cart' %}">My cart</a></li>
+<!--              <li><a href="#">Tea &amp; Coffee</a></li>-->
             </ul>
           </div>
 
@@ -364,9 +309,9 @@
             <div class="block-5 mb-5">
               <h3 class="footer-heading mb-4">Contact Info</h3>
               <ul class="list-unstyled">
-                <li class="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
-                <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                <li class="email">emailaddress@domain.com</li>
+                <li class="address">CALICUT,KOYILANDY,INDIA</li>
+                <li class="phone"><a href="tel://7558910228">+91 7558910228</a></li>
+                <li class="email">muhammedimranpv@gmail.com</li>
               </ul>
             </div>
 

@@ -190,7 +190,7 @@ margin-top:1px;
 
  <div class="card bg-glass">
           <div class="card-body px-4 py-5 px-md-5">
-            <form  method="post" action="{% url 'editproductt' id=user1.id %}">
+            <form  method="post" action="{% url 'editproductt' id=user1.id %}" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form2.as_p }}
 
@@ -229,7 +229,7 @@ margin-top:1px;
 
               <button  type="submit" class="btn btn-primary btn-block mb-4">save</button>
 
-              </button>
+
               <br>
                 <ul class="main-nav">
                 <li onclick=history.back()>Go Back</a></li>

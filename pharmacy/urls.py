@@ -34,7 +34,7 @@ urlpatterns = [
     path('changepassword',views.changepassword),
     path('editprofile/<int:id>',views.editprofile, name="editprofile"),
     path('addproduct',views.addproduct),
-    path('viewproduct',views.viewproduct),
+    path('viewproduct',views.viewproduct,name='viewproduct'),
     # path('editproduct/<int:id>',views.editproduct, name='editproduct'),
     path('editproductt/<int:id>',views.editproductt,name='editproductt'),
     path('deleteproduct/<int:id>', views.deleteproduct, name='deleteproduct'),
@@ -49,7 +49,9 @@ urlpatterns = [
     path('history',views.history,name="history"),
     path('phar_history', views.phar_history, name="phar_history"),
     path('view_cart',views.view_cart,name="view_cart"),
-    path('payment/<int:id>',views.paymentt, name="payment")
+    path('payment/<int:id>',views.paymentt, name="payment"),
+    path('searchbar',views.searchbar,name="searchbar"),
+
 
 
 
