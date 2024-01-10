@@ -32,13 +32,13 @@ urlpatterns = [
     path('logout',views.logout),
     path('changepsw',views.changepsw),
     path('changepassword',views.changepassword),
-    path('editprofile/<int:id>',views.editprofile, name="editprofile"),
+    path('editprofile',views.editprofile, name="editprofile"),
     path('addproduct',views.addproduct),
     path('viewproduct',views.viewproduct,name='viewproduct'),
     # path('editproduct/<int:id>',views.editproduct, name='editproduct'),
     path('editproductt/<int:id>',views.editproductt,name='editproductt'),
     path('deleteproduct/<int:id>', views.deleteproduct, name='deleteproduct'),
-    path('editpharmacyprofile/<int:id>',views.editpharmacyprofile, name='editpharmacyprofile'),
+    path('editpharmacyprofile',views.editpharmacyprofile, name='editpharmacyprofile'),
     path('book/<int:id>',views.book,name='book'),
     path('succsess',views.succsess,name='succsess'),
     path('already',views.already),
@@ -51,6 +51,8 @@ urlpatterns = [
     path('view_cart',views.view_cart,name="view_cart"),
     path('payment/<int:id>',views.paymentt, name="payment"),
     path('searchbar',views.searchbar,name="searchbar"),
+    path('pharmacyregform',views.pharmacyregform,name="pharmacyregform"),
+    path('pharmacyreg',views.pharmacyreg,name="pharmacyreg")
 
 
 

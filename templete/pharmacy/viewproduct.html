@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -134,6 +134,7 @@ h2 a {
 <body>
 <h1><span class="blue"></span>PHA<span class="blue"></span> <span class="yellow">RMACY</pan></h1>
 <h2><a href="https://github.com/pablorgarcia" target="_blank">DAYA MEDICALS CALICUT</a></h2>
+ <img  onclick="history.back()" style="height:50px; margin-top:-100px; margin-left:6px ;" src="{% static 'images/previous.png' %}">
 
 <table class="container">
   <thead>
@@ -157,8 +158,10 @@ h2 a {
       <td>{{i.price}}</td>
       <td>{{i.company}}</td>
        <td>{{i.type}}</td>
-      <td><a  href="{% url 'editproductt' id=i.id %}" data-toggle="tooltip"   data-placement="bottom" title="Edit"><img class="b" width="30" height="30" src="https://img.icons8.com/papercut/30/000000/create-new.png" alt="create-new" /></a></td>
-      <td><a  href="{% url 'deleteproduct' id=i.id %}" data-toggle="tooltip" data-placement="bottom" title="Delete"><img class="b" width="30" height="30" src="https://img.icons8.com/color/30/delete-forever.png" alt="delete-forever"/></a></td>
+        <td>
+      <a  href="{% url 'editproductt' id=i.id %}" data-toggle="tooltip"   data-placement="bottom" title="Edit"><img class="b" width="30" height="30" src="https://img.icons8.com/papercut/30/000000/create-new.png" alt="create-new" /></a>
+      <a  href="{% url 'deleteproduct' id=i.id %}" data-toggle="tooltip" data-placement="bottom" title="Delete"><img class="b" width="30" height="30" src="https://img.icons8.com/color/30/delete-forever.png" alt="delete-forever"/></a>
+        </td>
     </tr>
 {% endfor %}
   </tbody>

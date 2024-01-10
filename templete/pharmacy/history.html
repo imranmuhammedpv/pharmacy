@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,7 @@ table {
   border-collapse: separate;
   border-spacing: 0;
   width:80rem;
+  margin-left: 48px;
   margin-top:60px;
 }
 table tr th,
@@ -80,11 +81,16 @@ td{
 <!--    <a class="navbar-brand " style="margin-left:444px; " href="#">HOME</a>-->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
+
     </button>
 
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<!--          <div>-->
+<!--          <img  onclick="history.back()" style="height:2rem; margin-top:40px; margin-left:-35.5rem;"  src="{% static 'images/back.png' %}">-->
+<!--          </div>-->
         <li class="nav-item">
+
           <a class="nav-link" aria-current="page" onclick="history.back()">HOME</a>
         </li>
         <li class="nav-item">

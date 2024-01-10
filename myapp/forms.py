@@ -1,7 +1,7 @@
 from django import forms
 from.models  import user
 from.models import product
-from .models import phar
+from .models import Pharmacy
 
 class editprofileform(forms.ModelForm):
     class Meta:
@@ -15,6 +15,6 @@ class editproductform(forms.ModelForm):
 
 class pharmacyprofileform(forms.ModelForm):
     class Meta:
-        model = phar
+        model = Pharmacy
         fields = ['name', 'email', 'phone_no']
 

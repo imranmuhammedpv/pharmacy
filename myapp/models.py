@@ -1,30 +1,42 @@
 from django.db import models
 
 # Create your models here.
-class phar (models.Model):
+
+
+class Login (models.Model):
+    username = models.CharField(max_length=20)
+    password = models.IntegerField()
+    statuschoice = (('APPROVED', 'APPROVED'),
+              ('PENDING', 'PENDING'),
+              ('REJECT', 'REJECT')
+              )
+    status = models.CharField(choices=statuschoice, max_length=20, default='PENDING',null=True,blank=True)
+
+    type = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.username
+
+class Pharmacy (models.Model):
     name=models.CharField(max_length=20)
+    loginid = models.ForeignKey(Login, on_delete=models.CASCADE)
     email=models.CharField(max_length=20)
+    address=models.CharField(max_length=20)
     phone_no=models.IntegerField()
-    password=models.CharField(max_length=15)
-    status=(('APPROVED','APPROVED'),
-            ('PENDING','PENDING'),
-            ('REJECT','REJECT')
-            )
-    entry=models.CharField(choices=status,max_length=20,default='PENDING')
 
     def __str__(self):
         return self.name
 
-class user (models.Model):
-    name=models.CharField(max_length=20)
+class user(models.Model):
+    name = models.CharField(max_length=20)
+    loginid=models.ForeignKey(Login,on_delete=models.CASCADE)
     address=models.CharField(max_length=20)
     email=models.CharField(max_length=25)
-    password=models.CharField(max_length=10)
-
-    type=models.IntegerField()
+    phone_no=models.IntegerField()
 
     def __str__(self):
         return self.name
+
 
 class product(models.Model):
     image=models.FileField()
