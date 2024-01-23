@@ -39,6 +39,7 @@ class user(models.Model):
 
 
 class product(models.Model):
+    pharmacyid=models.ForeignKey(Pharmacy,on_delete=models.CASCADE)
     image=models.FileField()
     medicinename=models.CharField(max_length=20)
     price=models.CharField(max_length=20)

@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from .models import Pharmacy
 from .models import user,product,booking,cart,Login
 from django.shortcuts import HttpResponse
+from django.shortcuts import reverse
+from django.contrib.auth import authenticate
 from .forms import editprofileform
 from .forms import pharmacyprofileform
 from .forms import editproductform
@@ -15,9 +17,9 @@ def store(request):
     data = product.objects.all()
     return render(request, 'user/store.html', {'data': data})
 def registration (request):
-    return render(request,'signnew.html')
+    return render(request,'user/signuser.html')
 def pharmacyreg(request):
-    return render(request,'pharmacy/pharsign.html')
+    return render(request,'pharmacy/signpharmacy.html')
 
 def userpage(request):
     if 'id' in request.session:
@@ -52,7 +54,7 @@ def regform(request):
         data1.save()
         return render(request,'lognew.html')
     else:
-        return render(request,'signnew.html')
+        return render(request,'user/signuser.html')
 def pharmacyregform(request):
     if request.method=='POST':
         name = request.POST['name']
@@ -66,7 +68,7 @@ def pharmacyregform(request):
         data2.save()
         return render(request, 'lognew.html')
     else:
-        return render(request, 'pharmacy/pharsign.html')
+        return render(request, 'pharmacy/signpharmacy.html')
 
 
 
@@ -85,10 +87,16 @@ def log(request):
                 request.session['id'] = data.id
                 return redirect(pharpage)
             else:
-                return HttpResponse("admin approval ")
+                context = {
+                    'message': '  you can waite the admin is approval'
+                }
+                return render(request,'lognew.html',context)
 
-        except Exception as e:
-            return HttpResponse(e)
+        except Exception:
+                         context = {
+                             'message2': 'invalid password and username. Find your account and login.'
+                         }
+                         return render(request,'lognew.html',context)
     else:
         return render(request,'lognew.html')
 
@@ -131,7 +139,7 @@ def changepassword(request):
            except Exception:
                 return HttpResponse(" error")
     else:
-     return redirect(log)
+         return redirect(log)
 
 def editprofile(request):
     if 'id' in request.session:
@@ -178,20 +186,31 @@ def editprofile(request):
 
 
 def addproduct(request):
-    if request.method=='POST':
+    if 'id' in request.session:
+        data1=request.session['id']
+        data=Login.objects.get(id=data1)
+        userdata=Pharmacy.objects.get(loginid=data)
         image=request.FILES['image']
         medicinename=request.POST['medicinename']
         price=request.POST['price']
         company=request.POST['company']
         type=request.POST['type']
-        data=product.objects.create(image=image,medicinename=medicinename,price=price,company=company,type=type)
+        data=product.objects.create(pharmacyid=userdata,image=image,medicinename=medicinename,price=price,company=company,type=type)
         data.save()
         return redirect(viewproduct)
+    else:
+         return redirect(log)
 
 
 def viewproduct(request):
-    data=product.objects.all()
-    return render(request,'pharmacy/viewproduct.html',{'data':data})
+    if 'id' in request.session:
+        data1=request.session['id']
+        logindata=Login.objects.get(id=data1)
+        userdata=Pharmacy.objects.get(loginid=logindata)
+        data=product.objects.filter(pharmacyid=userdata)
+        return render(request,'pharmacy/viewproduct.html',{'data':data})
+    else:
+        return redirect(log)
 
 
 
@@ -231,7 +250,7 @@ def editproductt(request,id):
         else:
             return render(request,'pharmacy/editproduct.html',{'form2':userpr2,'user1':use2})
     else:
-        return redirect(viewproduct)
+        return redirect(log)
 
 def deleteproduct(request,id):
     data=product.objects.get(id=id)
@@ -303,12 +322,9 @@ def buymedicine(request,id):
         user1 =Login.objects.get(id=userid)
         userdata=user.objects.get(loginid=user1)
         currentmedicine=product.objects.get(id=id)
-        if booking.objects.filter(medicinename=currentmedicine,name=userdata).exists():
-            return redirect(already)
-        else:
-            data=booking.objects.create(name=userdata,medicinename=currentmedicine)
-            data.save()
-            return render(request,'user/booksuccess.html')
+        data=booking.objects.create(name=userdata,medicinename=currentmedicine)
+        data.save()
+        return render(request,'user/booksuccess.html')
 
 def Add_cart (request,id):
     if 'id' in request.session:

@@ -1,3 +1,4 @@
+{% load static %}
 <html>
   <head>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
@@ -37,6 +38,9 @@
       }
     </style>
     <body>
+    <div>
+     <img  onclick="history.back()" style="height:3rem; margin-top:-145px; margin-left:-40rem ;" src="{% static 'images/previous.png' %}">
+    </div>
       <div class="card">
       <div style="border-radius:200px; height:200px; width:200px; background: #F8FAF5; margin:0 auto;">
         <i class="checkmark">
@@ -44,6 +48,8 @@
       </div>
         <h1>Success</h1>
         <p>your payment is successfully completed<br/>& order is recieved!</p>
+    <button onclick="history.back()">go back</button>
       </div>
     </body>
+
 </html>
